@@ -1,0 +1,24 @@
+# copy this to sper.yaml and tweak
+# I keep mine next to the binary
+# (windows: %APPDATA%\sper\config.yaml)
+# or sper -c path/to/this.yaml dev-db once, it remembers it
+
+profiles:
+  web-app:
+    server: my-server
+    ports:
+      - 8080
+      - 3000
+
+  database:
+    server: bastion-host
+    ports:
+      - 5432:db.internal:5432
+    identity: ~/.ssh/id_ed25519
+
+  analytics:
+    server: user@192.168.1.100
+    port: 2222
+    ports:
+      - 9000
+    # password: "secret" # would rather not, only if you have to (DONT DO IT!)
